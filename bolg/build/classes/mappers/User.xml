@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.company.dao.IUserDao">
+  <select id="find" resultType="com.company.bean.User">
+  select `id`,`name`,`pass`,`sex`,`age`,`tel`,`provinceId`,`cityId`,`areaId`,`inputdate`,`ip` from user where id =#{id} and pass =#{pass}
+  </select>
+  <select id="findByName" resultType="com.company.bean.User">
+  select `id`,`name`,`pass`,`sex`,`age`,`tel`,`provinceId`,`cityId`,`areaId`,`inputdate`,`ip` from user where name =#{name} and pass =#{pass}
+  </select>
+  <insert id="add">
+  insert into user (`name`,`pass`,`sex`,`age`,`tel`,`provinceId`,`cityId`,`areaId`,`inputdate`,`ip`) values (#{name},#{pass},#{sex},#{age},#{tel},#{provinceId},#{cityId},#{areaId},#{inputdate},#{ip})
+  </insert>
+  <select id="findUserList" resultType="com.company.bean.User">
+  select `id`,`name`,`pass`,`sex`,`age`,`tel`,`provinceId`,`cityId`,`areaId`,`inputdate`,`ip` from user where id !=1
+  </select>
+  <delete id="delete">
+  delete from user where id = #{id}
+  </delete>
+  <select id="findById" resultType="com.company.bean.User">
+  select `id`,`name`,`pass`,`sex`,`age`,`tel`,`provinceId`,`cityId`,`areaId`,`inputdate`,`ip` from user where id =#{id}
+  </select>
+  <update id="update">
+  update user set `name`=#{name},`pass`=#{pass},`sex`=#{sex},`age`=#{age},`tel`=#{tel},`provinceId`=#{provinceId},`cityId`=#{cityId},`areaId`=#{areaId},`inputdate`=#{inputdate},`ip`=#{ip} where id=#{id}
+  </update>
+  <select id="findByUserName" resultType="com.company.bean.User">
+  select `id`,`name`,`pass`,`sex`,`age`,`tel`,`provinceId`,`cityId`,`areaId`,`inputdate`,`ip` from user where name =#{name}
+  </select>
+  </mapper>

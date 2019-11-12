@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.company.dao.IBlogDao">
+<insert id="add">
+  insert into blog (kid,uid,title,`schema`,content,clicks,`datetime`) values (#{kid},#{uid},#{title},#{schema},#{content},#{clicks},#{datetime})
+</insert>
+<select id="findList" resultType="com.company.bean.Blog">
+  select `id`,`kid`,`uid`,`title`,`schema`,`content`,`clicks`,`datetime` from blog
+</select>
+  <select id="findHotList" resultType="com.company.bean.Blog">
+  select `id`,`kid`,`uid`,`title`,`schema`,`content`,`clicks`,`datetime` from blog group by `clicks` limit 0,2
+  </select>
+  <select id="findIndexList" resultType="com.company.bean.Blog">
+  select `id`,`kid`,`uid`,`title`,`schema`,`content`,`clicks`,`datetime` from blog group by `clicks` limit 0,8
+  </select>
+  <select id="findListl" resultType="com.company.bean.Blog">
+  select `id`,`kid`,`uid`,`title`,`schema`,`content`,`clicks`,`datetime` from blog where `uid` = #{uid}
+  </select>
+  <select id="findKindList" resultType="com.company.bean.Blog">
+  select `id`,`kid`,`uid`,`title`,`schema`,`content`,`clicks`,`datetime` from blog where `uid` = #{uid}
+  </select>
+  <select id="find" resultType="com.company.bean.Blog">
+  select `id`,`kid`,`uid`,`title`,`schema`,`content`,`clicks`,`datetime` from blog where `id` = #{id}
+  </select>
+  <delete id="delete">
+  delete from blog where id = #{id}
+  </delete>
+  <update id="update">
+  update blog set `kid` = #{kid},`title` = #{title}, `schema` = #{schema}, `content` = #{content} where id=#{id}
+  </update>
+  </mapper>
